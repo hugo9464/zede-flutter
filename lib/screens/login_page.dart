@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:zede_app/screens/main/main_screen.dart';
 import 'package:zede_app/screens/profile_page.dart';
 import 'package:zede_app/screens/register_page.dart';
 import 'package:zede_app/utils/fire_auth.dart';
@@ -30,9 +31,7 @@ class _LoginPageState extends State<LoginPage> {
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => ProfilePage(
-            user: user,
-          ),
+          builder: (context) => MainScreen(user: user),
         ),
       );
     }
@@ -137,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                                                   .pushReplacement(
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      ProfilePage(user: user),
+                                                      MainScreen(user: user),
                                                 ),
                                               );
                                             }
