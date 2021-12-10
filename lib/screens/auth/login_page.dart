@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zede_app/screens/main/main_screen.dart';
 import 'package:zede_app/screens/profile_page.dart';
-import 'package:zede_app/screens/register_page.dart';
+import 'package:zede_app/screens/auth/register_page.dart';
 import 'package:zede_app/utils/fire_auth.dart';
 import 'package:zede_app/utils/validator.dart';
 

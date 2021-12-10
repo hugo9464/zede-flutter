@@ -11,6 +11,9 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Mon historique'),
+      ),
       body: const Text("Page historique"),
     );
   }

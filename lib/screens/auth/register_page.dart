@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:zede_app/screens/login_page.dart';
+import 'package:zede_app/screens/auth/login_page.dart';
 import 'package:zede_app/screens/profile_page.dart';
 import 'package:zede_app/utils/fire_auth.dart';
 import 'package:zede_app/utils/validator.dart';
