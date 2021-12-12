@@ -7,7 +7,7 @@ class WeighingService {
   // For registering a new user
   static Future<void> addWeighing({
     required String userid,
-    required String type,
+    required int? type,
     required double weight,
   }) async {
     CollectionReference weighings =

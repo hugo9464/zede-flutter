@@ -34,6 +34,21 @@
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCRAbkdUNgCUjoflmBhQ8L7rmykHf0Au7g",
+      authDomain: "api-zede.firebaseapp.com",
+      databaseURL: "https://api-zede-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "api-zede",
+      storageBucket: "api-zede.appspot.com",
+      messagingSenderId: "869249817505",
+      appId: "1:869249817505:web:390ac63036838641d6c9e0",
+      measurementId: "${config.measurementId}"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
