@@ -9,6 +9,7 @@ class WeighingService {
     required String userid,
     required int? type,
     required double weight,
+    required DateTime date,
   }) async {
     CollectionReference weighings =
         FirebaseFirestore.instance.collection('weighings');
@@ -18,7 +19,8 @@ class WeighingService {
         .add({
           'userid': userid,
           'type': type,
-          'weight': weight
+          'weight': weight,
+          'date': date,
         })
         .then((value) => print("Weighing Added"))
         .catchError((error) => print("Failed to add weighing: $error"));
