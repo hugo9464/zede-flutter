@@ -9,7 +9,6 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
@@ -20,10 +19,12 @@ class _HistoryPageState extends State<HistoryPage> {
           title: Text('Mon historique'),
         ),
         body: TableCalendar(
+          locale: 'fr_FR',
           firstDay: DateTime.utc(2010, 10, 16),
           lastDay: DateTime.now(),
           focusedDay: _focusedDay,
-          calendarFormat: _calendarFormat,
+          calendarFormat: CalendarFormat.month,
+          headerStyle: HeaderStyle(formatButtonVisible: false),
           selectedDayPredicate: (day) {
             // Use `selectedDayPredicate` to determine which day is currently selected.
             // If this returns true, then `day` will be marked as selected.
@@ -41,14 +42,14 @@ class _HistoryPageState extends State<HistoryPage> {
               });
             }
           },
-          onFormatChanged: (format) {
-            if (_calendarFormat != format) {
-              // Call `setState()` when updating calendar format
-              setState(() {
-                _calendarFormat = format;
-              });
-            }
-          },
+          // onFormatChanged: (format) {
+          //   if (_calendarFormat != format) {
+          //     // Call `setState()` when updating calendar format
+          //     setState(() {
+          //       _calendarFormat = format;
+          //     });
+          //   }
+          // },
           onPageChanged: (focusedDay) {
             // No need to call `setState()` here
             _focusedDay = focusedDay;
