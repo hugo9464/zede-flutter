@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:zede_app/services/weighing_service.dart';
+import 'package:zede_app/services/firebase/firebase_weighing_service.dart';
 
 class NumberPicker extends StatefulWidget {
   const NumberPicker({Key? key}) : super(key: key);

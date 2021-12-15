@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:zede_app/screens/main/main_screen.dart';
 import 'package:zede_app/screens/profile_page.dart';
 import 'package:zede_app/screens/auth/register_page.dart';
+import 'package:zede_app/services/api/UserService.dart';
 import 'package:zede_app/utils/fire_auth.dart';
 import 'package:zede_app/utils/validator.dart';
 
@@ -120,8 +121,8 @@ class _LoginPageState extends State<LoginPage> {
                                               _isProcessing = true;
                                             });
 
-                                            User? user = await FireAuth
-                                                .signInUsingEmailPassword(
+                                            User user = await user_service.
+                                                .signIn(
                                               email: _emailTextController.text,
                                               password:
                                                   _passwordTextController.text,
