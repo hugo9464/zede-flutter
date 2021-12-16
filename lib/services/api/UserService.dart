@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:zede_app/models/User.dart';
 
 class UserService {
-  static final url = Uri.parse('https://localhost:3000/api/user/login');
+  static final url = Uri.parse('http://localhost:3000/api/user/login');
 
   static Future<User> signIn({
     required String email,
@@ -16,6 +18,7 @@ class UserService {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
+      log(response.body);
       return User.fromJson(jsonDecode(response.body));
     } else {
       // If the server did not return a 200 OK response,

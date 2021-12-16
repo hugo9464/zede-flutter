@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zede_app/models/User.dart';
 import 'package:zede_app/screens/auth/login_page.dart';
 import 'package:zede_app/utils/fire_auth.dart';
 
@@ -35,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'NAME: ${_currentUser.displayName}',
+              'NAME: ${_currentUser.firstname}',
               style: Theme.of(context).textTheme.bodyText1,
             ),
             SizedBox(height: 16.0),
@@ -44,52 +45,52 @@ class _ProfilePageState extends State<ProfilePage> {
               style: Theme.of(context).textTheme.bodyText1,
             ),
             SizedBox(height: 16.0),
-            _currentUser.emailVerified
-                ? Text(
-                    'Email verified',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.green),
-                  )
-                : Text(
-                    'Email not verified',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.red),
-                  ),
+            // _currentUser.emailVerified
+            //     ? Text(
+            //         'Email verified',
+            //         style: Theme.of(context)
+            //             .textTheme
+            //             .bodyText1!
+            //             .copyWith(color: Colors.green),
+            //       )
+            //     : Text(
+            //         'Email not verified',
+            //         style: Theme.of(context)
+            //             .textTheme
+            //             .bodyText1!
+            //             .copyWith(color: Colors.red),
+            //       ),
             SizedBox(height: 16.0),
             _isSendingVerification
                 ? CircularProgressIndicator()
                 : Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ElevatedButton(
-                        onPressed: () async {
-                          setState(() {
-                            _isSendingVerification = true;
-                          });
-                          await _currentUser.sendEmailVerification();
-                          setState(() {
-                            _isSendingVerification = false;
-                          });
-                        },
-                        child: Text('Verify email'),
-                      ),
+                      // ElevatedButton(
+                      //   onPressed: () async {
+                      //     setState(() {
+                      //       _isSendingVerification = true;
+                      //     });
+                      //     await _currentUser.sendEmailVerification();
+                      //     setState(() {
+                      //       _isSendingVerification = false;
+                      //     });
+                      //   },
+                      //   child: Text('Verify email'),
+                      // ),
                       SizedBox(width: 8.0),
-                      IconButton(
-                        icon: Icon(Icons.refresh),
-                        onPressed: () async {
-                          User? user = await FireAuth.refreshUser(_currentUser);
+                      // IconButton(
+                      //   icon: Icon(Icons.refresh),
+                      //   onPressed: () async {
+                      //     User? user = await FireAuth.refreshUser(_currentUser);
 
-                          if (user != null) {
-                            setState(() {
-                              _currentUser = user;
-                            });
-                          }
-                        },
-                      ),
+                      //     if (user != null) {
+                      //       setState(() {
+                      //         _currentUser = user;
+                      //       });
+                      //     }
+                      //   },
+                      // ),
                     ],
                   ),
             SizedBox(height: 16.0),
@@ -100,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       setState(() {
                         _isSigningOut = true;
                       });
-                      await FirebaseAuth.instance.signOut();
+                      // await FirebaseAuth.instance.signOut();
                       setState(() {
                         _isSigningOut = false;
                       });

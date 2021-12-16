@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zede_app/models/User.dart';
 import 'package:zede_app/screens/history_screen.dart';
 import 'package:zede_app/screens/auth/login_page.dart';
 import 'package:zede_app/screens/profile_page.dart';
@@ -15,7 +16,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int pageIndex = 0;
-  late User _currentUser; 
+  late User _currentUser;
 
   late List<Widget> pageList;
 
@@ -26,11 +27,9 @@ class _MainScreenState extends State<MainScreen> {
       WeighingScreen(),
       HistoryPage(),
       ProfilePage(user: _currentUser),
-
-  ];
+    ];
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +40,13 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (value) {
           setState(() {
             pageIndex = value;
-          });;
+          });
+          ;
         },
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.delete), label: "Pesée"),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: "Historique"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today), label: "Historique"),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: "Défi"),
         ],
       ),
