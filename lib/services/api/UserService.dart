@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -19,7 +20,12 @@ class UserService {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       log(response.body);
-      return User.fromJson(jsonDecode(response.body));
+      final user = User.fromJson(jsonDecode(response.body));
+
+      const storage = FlutterSecureStorage();
+      await storage.write(key: "token", value: user.token);
+
+      return user;
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

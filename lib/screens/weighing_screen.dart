@@ -21,10 +21,7 @@ class _WeighingScreenState extends State<WeighingScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Ecran de pesée")
-            // const NumberPicker(),
-          ],
+          children: [const NumberPicker()],
         ),
       ),
     );

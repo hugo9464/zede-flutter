@@ -1,6 +1,10 @@
 // class Weighing {
-//   required String userid,
-//     required int? type,
-//     required double weight,
-//     required DateTime date,
+//   final String userid,
+//     final int? type,
+//     final double weight,
+//     final DateTime date,
+
+//     Weighing({
+
+//     });
 // }
