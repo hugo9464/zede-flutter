@@ -15,7 +15,7 @@ class _HistoryPageState extends State<HistoryPage> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
-  List<Event> _getEventsForDay(DateTime day) {
+  List<Event> _getEventsForDay(DateTime day, List<Weighing> weighings) {
     // Implementation example
     return kEvents[day] ?? [];
   }
@@ -35,7 +35,9 @@ class _HistoryPageState extends State<HistoryPage> {
                   focusedDay: _focusedDay,
                   calendarFormat: CalendarFormat.month,
                   headerStyle: HeaderStyle(formatButtonVisible: false),
-                  eventLoader: _getEventsForDay,
+                  eventLoader: (day) {
+                    return _getEventsForDay(day, snapshot.data!);
+                  },
                   selectedDayPredicate: (day) {
                     // Use `selectedDayPredicate` to determine which day is currently selected.
                     // If this returns true, then `day` will be marked as selected.
