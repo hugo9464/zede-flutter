@@ -4,6 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class WeighingService {
+  static CollectionReference weighings =
+      FirebaseFirestore.instance.collection('weighings');
+
   // For registering a new user
   static Future<void> addWeighing({
     required String userid,
@@ -11,9 +14,6 @@ class WeighingService {
     required double weight,
     required DateTime date,
   }) async {
-    CollectionReference weighings =
-        FirebaseFirestore.instance.collection('weighings');
-
     // Call the user's CollectionReference to add a new user
     return weighings
         .add({

@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:zede_app/services/weighing_service.dart';
+import 'package:zede_app/services/api/WeighingService.dart';
 
 class NumberPicker extends StatefulWidget {
   const NumberPicker({Key? key}) : super(key: key);
@@ -12,7 +11,6 @@ class NumberPicker extends StatefulWidget {
 }
 
 class _NumberPickerState extends State<NumberPicker> {
-  User? user = FirebaseAuth.instance.currentUser;
   double _currentDoubleValue = 0.0;
 
   int? typeIndex = 0;
@@ -44,11 +42,12 @@ class _NumberPickerState extends State<NumberPicker> {
         ),
         const SizedBox(height: 32),
         TextButton(
-          onPressed: () => WeighingService.addWeighing(
-              userid: user!.uid,
-              type: typeIndex,
-              weight: _currentDoubleValue,
-              date: DateTime.now()),
+          onPressed: () => WeighingService.saveWeighing(
+            userId: "userId",
+            type: typeIndex,
+            weight: _currentDoubleValue,
+            // date: DateTime.now()
+          ),
           child: const Text(
             'Enregistrer ma pesée',
           ),

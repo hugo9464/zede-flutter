@@ -120,44 +120,42 @@ class _RegisterPageState extends State<RegisterPage> {
                                           _isProcessing = false;
                                         });
 
-                                        if (user != null) {
-                                          Navigator.of(context)
-                                              .pushAndRemoveUntil(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ProfilePage(user: user),
-                                            ),
-                                            ModalRoute.withName('/'),
-                                          );
-                                        }
+                                        // if (user != null) {
+                                        //   Navigator.of(context)
+                                        //       .pushAndRemoveUntil(
+                                        //     MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           ProfilePage(user: user),
+                                        //     ),
+                                        //     ModalRoute.withName('/'),
+                                        //   );
+                                        // }
                                       }
                                     },
                                     child: Text(
                                       'Créer mon compte',
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 32.0),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () async {
-                                          Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      'Retour à la connexion',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    
-                                  ),
-                                ),
-                              ],
-                            )
+                      SizedBox(height: 32.0),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                'Retour à la connexion',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 )
