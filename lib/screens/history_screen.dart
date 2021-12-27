@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:zede_app/models/Weighing.dart';
 import 'package:zede_app/services/api/WeighingService.dart';
-import 'package:zede_app/utils/EventUtils.dart';
+
+class Event {
+  final String title;
+
+  const Event(this.title);
+
+  @override
+  String toString() => title;
+}
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage();
@@ -15,9 +23,15 @@ class _HistoryPageState extends State<HistoryPage> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
-  List<Event> _getEventsForDay(DateTime day, List<Weighing> weighings) {
-    // Implementation example
-    return kEvents[day] ?? [];
+  List<Event> _getEventsForDay(DateTime day, List<Weighing>? weighings) {
+    if (weighings != null) {
+      return weighings
+          .where((weighing) => isSameDay(day, weighing.date))
+          .map((weighing) => Event("toto"))
+          .toList();
+    } else {
+      return [];
+    }
   }
 
   @override
@@ -36,7 +50,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   calendarFormat: CalendarFormat.month,
                   headerStyle: HeaderStyle(formatButtonVisible: false),
                   eventLoader: (day) {
-                    return _getEventsForDay(day, snapshot.data!);
+                    return _getEventsForDay(day, snapshot.data);
                   },
                   selectedDayPredicate: (day) {
                     // Use `selectedDayPredicate` to determine which day is currently selected.

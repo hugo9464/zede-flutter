@@ -40,8 +40,7 @@ class WeighingService {
     });
 
     if (response.statusCode == 200) {
-      log(response.body);
-      log("Weighing saved successfully");
+      log("Getting weighings success");
 
       final List weighingsAsJson = json.decode(response.body);
 
