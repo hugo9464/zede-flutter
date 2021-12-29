@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'screens/auth/login_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'utils/palette.dart';
+
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: Palette.kToDark,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             textStyle: TextStyle(
