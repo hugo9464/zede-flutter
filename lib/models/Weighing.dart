@@ -3,7 +3,7 @@ class Weighing {
   final num weight;
   final String type;
   final String userId;
-  final DateTime? date;
+  final DateTime date;
 
   Weighing(
       {required this.id,
@@ -18,6 +18,6 @@ class Weighing {
         weight: json['weight'],
         type: json['type'],
         userId: json['userId'],
-        date: DateTime.tryParse(json['date']));
+        date: DateTime.tryParse(json['date']) ?? DateTime.now());
   }
 }
