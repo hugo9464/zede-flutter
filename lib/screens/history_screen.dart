@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:zede_app/models/Weighing.dart';
 import 'package:zede_app/services/api/WeighingService.dart';
+import 'package:zede_app/utils/StackedBarChart.dart';
 
 // class Event {
 //   final String title;
@@ -108,7 +109,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       }
                   }
                 }),
-            // Text(_getEventsForDay(_selectedDay).first.type)
+            // StackedBarChart.withSampleData()
           ],
         ),
       ),
