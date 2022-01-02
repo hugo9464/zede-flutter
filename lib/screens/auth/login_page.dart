@@ -41,8 +41,9 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 24.0),
               child: Text(
-                'Login',
+                'Content de vous revoir !',
                 style: Theme.of(context).textTheme.headline1,
+                textAlign: TextAlign.center,
               ),
             ),
             Form(
@@ -57,6 +58,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     decoration: InputDecoration(
                       hintText: "Email",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       errorBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.circular(6.0),
                         borderSide: BorderSide(
@@ -75,6 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     decoration: InputDecoration(
                       hintText: "Password",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                       errorBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.circular(6.0),
                         borderSide: BorderSide(
@@ -84,64 +90,52 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 24.0),
-                  _isProcessing
-                      ? CircularProgressIndicator()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  _focusEmail.unfocus();
-                                  _focusPassword.unfocus();
+                  ElevatedButton(
+                    onPressed: () async {
+                      _focusEmail.unfocus();
+                      _focusPassword.unfocus();
 
-                                  if (_formKey.currentState!.validate()) {
-                                    setState(() {
-                                      _isProcessing = true;
-                                    });
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          _isProcessing = true;
+                        });
 
-                                    User user = await UserService.signIn(
-                                        email: _emailTextController.text,
-                                        password: _passwordTextController.text);
+                        User user = await UserService.signIn(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text);
 
-                                    setState(() {
-                                      _isProcessing = false;
-                                    });
+                        setState(() {
+                          _isProcessing = false;
+                        });
 
-                                    if (user != null) {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              MainScreen(user: user),
-                                        ),
-                                      );
-                                    }
-                                  }
-                                },
-                                child: Text(
-                                  'Sign In',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
+                        if (user != null) {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => MainScreen(user: user),
                             ),
-                            SizedBox(width: 24.0),
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => RegisterPage(),
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  'Register',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
+                          );
+                        }
+                      }
+                    },
+                    child: Text(
+                      'Je me connecte',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(width: 24.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RegisterPage(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
             )

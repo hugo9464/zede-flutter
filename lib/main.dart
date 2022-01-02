@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'screens/auth/login_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'utils/palette.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Authentication',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'VentiCF',
         brightness: Brightness.light,
         primarySwatch: Palette.kToDark,
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,9 +43,8 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 46.0,
-            color: Colors.blue.shade700,
-            fontWeight: FontWeight.w500,
+            fontSize: 40,
+            color: Color(0xff2B2B2B),
           ),
           bodyText1: TextStyle(fontSize: 18.0),
         ),
