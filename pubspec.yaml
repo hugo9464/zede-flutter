@@ -86,9 +86,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: VentiCF
+    - family: VentiCF-Ultra
       fonts:
         - asset: fonts/VentiCF-Ultra.ttf
+    - family: VentiCF-Bold
+      fonts:
+        - asset: fonts/VentiCF-Bold.ttf
+    - family: VentiCF-Thin
+      fonts:
+        - asset: fonts/VentiCF-Thin.ttf
+    - family: VentiCF-Light
+      fonts:
+        - asset: fonts/VentiCF-Light.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

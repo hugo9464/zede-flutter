@@ -81,9 +81,6 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: _passwordTextController,
                         focusNode: _focusPassword,
                         obscureText: true,
-                        validator: (value) => Validator.validatePassword(
-                          password: value,
-                        ),
                         decoration: InputDecoration(
                           hintText: "Mot de passe",
                           errorBorder: UnderlineInputBorder(

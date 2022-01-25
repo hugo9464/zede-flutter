@@ -51,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    style: TextStyle(fontFamily: 'VentiCF-Bold'),
                     controller: _emailTextController,
                     focusNode: _focusEmail,
                     validator: (value) => Validator.validateEmail(
@@ -71,14 +72,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 8.0),
                   TextFormField(
+                    style: TextStyle(fontFamily: 'VentiCF-Bold'),
                     controller: _passwordTextController,
                     focusNode: _focusPassword,
                     obscureText: true,
-                    validator: (value) => Validator.validatePassword(
-                      password: value,
-                    ),
                     decoration: InputDecoration(
-                      hintText: "Password",
+                      hintText: "Mot de passe",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       errorBorder: UnderlineInputBorder(
@@ -117,13 +116,26 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       }
                     },
-                    child: Text(
-                      'Je me connecte',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    child: Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Text(
+                          'JE ME CONNECTE',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontFamily: 'VentiCF-Bold'),
+                        )),
                   ),
-                  SizedBox(width: 24.0),
-                  ElevatedButton(
+                  SizedBox(
+                    width: 24.0,
+                    height: 40.0,
+                  ),
+                  Text(
+                    'Pas encore membre de ZÈDE ?',
+                    style:
+                        TextStyle(fontSize: 20.0, fontFamily: 'VentiCF-Light'),
+                  ),
+                  TextButton(
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -132,8 +144,12 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     },
                     child: Text(
-                      'Register',
-                      style: TextStyle(color: Colors.white),
+                      'CRÉER MON COMPTE',
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 20.0,
+                          fontFamily: 'VentiCF-Light',
+                          color: Colors.black),
                     ),
                   ),
                 ],

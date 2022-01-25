@@ -30,20 +30,17 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Authentication',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'VentiCF',
+        fontFamily: 'VentiCF-Ultra',
         brightness: Brightness.light,
         primarySwatch: Palette.kToDark,
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            textStyle: TextStyle(
-              fontSize: 24.0,
-            ),
-            padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
-          ),
-        ),
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0))))),
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 40,
+            fontSize: 35,
             color: Color(0xff2B2B2B),
           ),
           bodyText1: TextStyle(fontSize: 18.0),
