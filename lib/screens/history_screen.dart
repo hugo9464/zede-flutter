@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:zede_app/components/WeighingsChart.dart';
+import 'package:zede_app/components/day_widget.dart';
 import 'package:zede_app/models/Weighing.dart';
 import 'package:zede_app/services/api/WeighingService.dart';
 import 'package:zede_app/utils/StackedBarChart.dart';
@@ -28,6 +30,7 @@ class _HistoryPageState extends State<HistoryPage> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
+  late Future<List<Weighing>> weighingsFuture;
   late List<Weighing> weighings;
 
   List<Weighing> _getEventsForDay(DateTime day) {
@@ -45,17 +48,22 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   @override
+  void initState() {
+    weighingsFuture = WeighingService.getAllWeighings();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Mon historique'),
-      ),
+      backgroundColor: Color(0xff57e589),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 30),
             FutureBuilder<List<Weighing>>(
-                future: WeighingService.getAllWeighings(),
+                future: weighingsFuture,
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
@@ -109,6 +117,24 @@ class _HistoryPageState extends State<HistoryPage> {
                       }
                   }
                 }),
+            Expanded(
+                child: Container(
+                    child: IntrinsicHeight(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        DayView(
+                          date: _selectedDay,
+                        )
+                      ],
+                    )),
+                    decoration: new BoxDecoration(
+                        color: Color(0xfffffffa),
+                        borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(40.0),
+                            topRight: const Radius.circular(40.0)))))
+
             // StackedBarChart.withSampleData()
           ],
         ),
