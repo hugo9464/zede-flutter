@@ -18,12 +18,13 @@ class HistoryScreenContent extends StatefulWidget {
 
 class _HistoryScreenContentState extends State<HistoryScreenContent> {
   late DateTime _focusedDay;
-  DateTime? _selectedDay;
+  late DateTime _selectedDay;
 
   @override
   void initState() {
     super.initState();
     _focusedDay = widget.focusedDay;
+    _selectedDay = widget.focusedDay;
   }
 
   List<Weighing> _getEventsForDay(DateTime day) {

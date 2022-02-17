@@ -4,7 +4,8 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:zede_app/services/api/WeighingService.dart';
 
 class NumberPicker extends StatefulWidget {
-  const NumberPicker({Key? key}) : super(key: key);
+  const NumberPicker({Key? key, required BuildContext context})
+      : super(key: key);
 
   @override
   _NumberPickerState createState() => _NumberPickerState();
@@ -42,17 +43,22 @@ class _NumberPickerState extends State<NumberPicker> {
         ),
         const SizedBox(height: 32),
         TextButton(
-          onPressed: () => WeighingService.saveWeighing(
-            userId: "userId",
-            type: typeIndex,
-            weight: _currentDoubleValue,
-            // date: DateTime.now()
-          ),
+          onPressed: () => sendWeighing(context: context),
           child: const Text(
             'Enregistrer ma pesée',
           ),
         ),
       ],
     );
+  }
+
+  sendWeighing({required BuildContext context}) {
+    WeighingService.saveWeighing(
+      userId: "userId",
+      type: typeIndex,
+      weight: _currentDoubleValue,
+      // date: DateTime.now()
+    );
+    Navigator.pop(context);
   }
 }

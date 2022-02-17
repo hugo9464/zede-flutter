@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zede_app/components/history_screen_content.dart';
+import 'package:zede_app/components/number_picker.dart';
 import 'package:zede_app/models/Weighing.dart';
 import 'package:zede_app/services/api/WeighingService.dart';
 
@@ -59,6 +60,19 @@ class _HistoryPageState extends State<HistoryPage> {
             // StackedBarChart.withSampleData()
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                    title: Text("Ajouter une pesée"),
+                    content: NumberPicker(context: context));
+              });
+        },
+        backgroundColor: const Color(0xff57e589),
+        child: const Icon(Icons.add),
       ),
     );
   }
