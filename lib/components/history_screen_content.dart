@@ -79,6 +79,7 @@ class _HistoryScreenContentState extends State<HistoryScreenContent> {
           ),
           Expanded(
               child: Container(
+                  padding: EdgeInsets.only(top: 50),
                   child: IntrinsicHeight(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
